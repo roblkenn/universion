@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="UniVersion",
-    version="0.0.1",
+    name="universion",
+    version="0.0.5",
     author="Robert Kennedy",
     author_email="robert076kennedy@gmail.com",
     description="An automated versioning tool using semantic versioning and conventional commits that supports a majority of software project types.",
