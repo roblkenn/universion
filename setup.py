@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="universion",
-    version="0.0.5",
+    version="0.0.6",
     author="Robert Kennedy",
     author_email="robert076kennedy@gmail.com",
     description="An automated versioning tool using semantic versioning and conventional commits that supports a majority of software project types.",
@@ -18,4 +18,9 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    entry_points={
+        'console_scripts': [
+            'universion=universion.consoleInterface:main',
+        ],
+    },
 )
