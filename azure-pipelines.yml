@@ -1,0 +1,55 @@
+trigger:
+- develop
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+# Install Build/Package Tools
+- task: UsePythonVersion@0
+  displayName: 'Install Python3'
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+    architecture: 'x64'
+
+- script: python3 -m pip install --user --upgrade setuptools wheel twine
+  displayName: 'Install PyPi Packaging Tools'
+
+# Run Unit Tests
+
+
+# Set Pipeline Version Variable
+- script: python3 getVersion.py
+  displayName: 'Get Version Number from setup.py'
+
+- task: oneLuckiDevJson2Variable@1
+  displayName: 'Import Version Number as Pipeline Variable'
+  inputs:
+    jsonFile: 'version.json'
+    shouldPrefixVariables: true
+    variablePrefix: 'json'
+
+- task: VariableSetTask@1
+  displayName: 'Set Build Name as Version'
+  inputs:
+    VariableName: 'Build.BuildNumber'
+    Value: '$(json.version)'
+    IsSecret: false
+
+# Package and publish
+- script: python3 setup.py sdist bdist_wheel
+  displayName: 'Build PyPi Package'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'dist'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
