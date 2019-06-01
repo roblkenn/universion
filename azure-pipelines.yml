@@ -41,5 +41,14 @@ steps:
 - script: python3 setup.py sdist bdist_wheel
   displayName: 'Build PyPi Package'
 
-- script: python3 -m twine upload dist/* --username $(pypiUsername) --password $(pypiPassword)
-  displayName: 'Upload to PyPi'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'dist'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
