@@ -3,12 +3,9 @@ import setuptools
 with open("README.md", "r") as f:
     long_description = f.read()
 
-with open("VERSION", "r") as f:
-    version = f.read().strip()
-
 setuptools.setup(
     name="universion",
-    version=version,
+    version="0.1.2",
     author="Robert Kennedy",
     author_email="robert076kennedy@gmail.com",
     description="An automated versioning tool using semantic versioning and conventional commits that supports a majority of software project types.",
@@ -28,7 +25,8 @@ setuptools.setup(
     },
     install_requires=[
         "Click",
-        "GitPython"
+        "GitPython",
+        "setuptools",
     ],
     include_package_data=True,
 )

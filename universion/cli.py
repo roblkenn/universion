@@ -1,7 +1,7 @@
 import click
+import pkg_resources
 
-with open('../VERSION', 'r') as f:
-	versionStr = f.read().strip()
+versionStr = pkg_resources.require("universion")[0].version
 
 @click.group(invoke_without_command=True)
 @click.option('--version', is_flag=True)
