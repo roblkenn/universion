@@ -1,4 +1,5 @@
-[![Build Status](https://dev.azure.com/robert076kennedy/Tools/_apis/build/status/UniVersion-CI?branchName=develop)](https://dev.azure.com/robert076kennedy/Tools/_build/latest?definitionId=4&branchName=develop) [![PyPI version](https://badge.fury.io/py/universion.svg)](https://badge.fury.io/py/universion)
+[![Build Status](https://dev.azure.com/robert076kennedy/Tools/_apis/build/status/UniVersion-CI?branchName=develop)](https://dev.azure.com/robert076kennedy/Tools/_build/latest?definitionId=4&branchName=develop) [![PyPI version](https://badge.fury.io/py/universion.svg)](https://badge.fury.io/py/universion) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
 
 # UniVersion
 
