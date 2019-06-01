@@ -1,11 +1,14 @@
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+with open("README.md", "r") as f:
+    long_description = f.read()
+
+with open("VERSION", "r") as f:
+    version = f.read().strip()
 
 setuptools.setup(
     name="universion",
-    version="0.1.0",
+    version=version,
     author="Robert Kennedy",
     author_email="robert076kennedy@gmail.com",
     description="An automated versioning tool using semantic versioning and conventional commits that supports a majority of software project types.",
@@ -27,4 +30,5 @@ setuptools.setup(
         "Click",
         "GitPython"
     ],
+    include_package_data=True,
 )
